@@ -25,16 +25,22 @@ import { Component } from '@angular/core';\n`;
     ts += `
 @Component({
     selector: 'my-comp-${me}',
-    template: '<div>component ${me}<div style="padding-left: 5px">`;
+    template: \`<div>
+      <span>component ${me}</span>
+      <div style="padding-left: 5px">`;
 
     if (left <= n) {
-      ts += `<my-comp-${left}></my-comp-${left}>`;
+      ts += `
+        <my-comp-${left}></my-comp-${left}>`;
     }
     if (right <= n) {
-      ts += `<my-comp-${right}></my-comp-${right}>`;
+      ts += `
+        <my-comp-${right}></my-comp-${right}>`;
     }
 
-    ts += `</div></div>'
+    ts += `
+      </div></div>
+    \`
 })
 export class GeneratedComponent${me} { }
 `;
@@ -50,7 +56,7 @@ function generateAppComponent() {
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
+    selector: 'app-root',
     template: '<h1>Angular 2 App with many components</h1><my-comp-${fmt(1)}></my-comp-${fmt(1)}>'
 })
 export class AppComponent { }
