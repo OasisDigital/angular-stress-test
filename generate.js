@@ -3,6 +3,8 @@ const fs = require("fs");
 // TODO make this a command line param
 const baseDir = "./";
 
+const randValue = Math.round(Math.random() * 10000);
+
 function fmt(n) {
   let result = n.toString();
   // Stay clear of the left-pad chaos!
@@ -12,7 +14,7 @@ function fmt(n) {
   return result;
 }
 
-function generateComponents(n) {
+function generateComponents(n, deterministic) {
   for (let i = 1; i <= n; i++) {
     const me = fmt(i);
     const left = fmt(2 * i);
@@ -26,7 +28,14 @@ import { Component, Input } from '@angular/core';\n`;
 @Component({
   selector: 'my-comp-${me}',
   template: \`<div>
-    <span>component {{myName}}, parent is {{parentName}}</span>
+    <span>component {{myName}}, parent is {{parentName}}</span>`;
+
+    if(! deterministic) {
+      ts += `
+    <small>[${ randValue }]</small>`;
+    }
+
+    ts += `
     <div style="padding-left: 5px">`;
 
     if (left <= n) {
@@ -44,8 +53,16 @@ import { Component, Input } from '@angular/core';\n`;
 })
 export class GeneratedComponent${me} {
   @Input() parentName: string;
-  myName: string = "${me}"
-}
+  myName: string = "${me}";
+`;
+
+  if(! deterministic) {
+    ts += `
+  // Random variable to make this component different on each generation
+  variable${ randValue }: number = ${ randValue };
+`;
+  }
+    ts += `}
 `;
 
     const componentFileName = `${baseDir}component${me}.ts`;
@@ -101,8 +118,8 @@ export class AppModule { }
   fs.writeFileSync(baseDir + "app.module.ts", ts);
 }
 
-function generate(n) {
-  generateComponents(n);
+function generate(n, deterministic) {
+  generateComponents(n, deterministic);
   generateAppComponent(n);
   generateAppModule(n);
 }

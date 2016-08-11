@@ -11,6 +11,21 @@ components use each other, these fields and bindings are used also.
 An NgModule is also generated - the resutls are compatible as of this version
 with rc.5, and not with any older version of Angular 2.
 
+## Stress Testing Your Build Tooling
+
+Optionally, the generated components can be made different on each run, by
+inserting a meaningless random value. This is useful for stress-testing build
+tooling - you can this generator in a loop like so (in Bash):
+
+```
+for i in `seq 1 1000`; do angular2-stress-test 500 -r ; sleep 5 ; done
+```
+
+By adjusting the delay (in second) and number of components generated, you can
+"strees test" any build tool (like angular-cli) which is watching the files and
+re-building. While such a thing is running, keep an eye on your build tool's
+CPU and RAM use.
+
 ## Installation
 
 ```
