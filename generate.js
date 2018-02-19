@@ -124,5 +124,4 @@ function generate(n, deterministic) {
   generateAppModule(n);
 }
 
-
 module.exports = generate;

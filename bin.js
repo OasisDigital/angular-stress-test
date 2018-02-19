@@ -17,9 +17,9 @@ const args = process.argv.slice(2).filter(function(arg) {
 
 if (help || args.length === 0) {
   var log = help ? console.log : console.error;
-  log('Usage: angular2-stress-test N');
+  log('Usage: angular-stress-test N');
   log('');
-  log('  Generates an Angular 2 application in the current directory');
+  log('  Generates an Angular application in the current directory');
   log('  consisting of an application component and N additional');
   log('  components.');
   log('');

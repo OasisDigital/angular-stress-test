@@ -1,7 +1,7 @@
 {
-  "name": "angular2-stress-test",
-  "version": "0.6.1",
-  "description": "Generate an Angular 2 application with N components",
+  "name": "angular-stress-test",
+  "version": "0.7.0",
+  "description": "Generate an Angular application with N components",
   "bin": "./bin.js",
   "main": "./generate.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "Kyle Cordes <kyle.cordes@oasisdigital.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OasisDigital/angular2-stress-test.git"
+    "url": "https://github.com/OasisDigital/angular-stress-test.git"
   },
   "license": "MIT",
   "files": [
