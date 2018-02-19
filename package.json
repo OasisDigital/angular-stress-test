@@ -1,6 +1,6 @@
 {
   "name": "angular-stress-test",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Generate an Angular application with N components",
   "bin": "./bin.js",
   "main": "./generate.js",

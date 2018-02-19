@@ -1,6 +1,5 @@
 const fs = require("fs");
 
-// TODO make this a command line param
 const baseDir = "./";
 
 const randValue = Math.round(Math.random() * 10000);
@@ -77,7 +76,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: '<h1>Angular 2 App with ${n+1} components</h1><my-comp-${fmt(1)}></my-comp-${fmt(1)}>'
+  template: '<h1>Angular App with ${n+1} components</h1><my-comp-${fmt(1)}></my-comp-${fmt(1)}>'
 })
 export class AppComponent { }
 `;
@@ -118,10 +117,14 @@ export class AppModule { }
   fs.writeFileSync(baseDir + "app.module.ts", ts);
 }
 
-function generate(n, deterministic) {
-  generateComponents(n, deterministic);
-  generateAppComponent(n);
-  generateAppModule(n);
+function generate(nModules, nComponents, deterministic) {
+  if(nModules !== 1) {
+    console.error('>1 module support not yet ready');
+    process.exit(2);
+  }
+  generateComponents(nComponents, deterministic);
+  generateAppComponent(nComponents);
+  generateAppModule(nComponents);
 }
 
 module.exports = generate;

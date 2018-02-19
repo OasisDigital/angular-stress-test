@@ -34,12 +34,13 @@ npm install -g angular-stress-test
 ## Usage
 
 ```
-cd directory-with-your-components-in-it
-angular-stress-test 42
+cd to-a-typical-angular-app
+cd src/app
+angular-stress-test 42 420
 ```
 
-This will generate an application with one application component and 42
-additional components. They will be nested in a "binary tree" shape, with a bit
+This will generate an application with 42 modules and 420 components spread
+across those modules. They will be nested in a "binary tree" shape, with a bit
 of indentation to make this clear on the screen.
 
 The output is compatible with Angular CLI; you can use CLI to
@@ -55,9 +56,9 @@ itself, under similar conditions.
 
 ## Who?
 
-Kyle Cordes    http://kylecordes.com/
+Kyle Cordes    https://kylecordes.com/
 
-Oasis Digital  http://oasisdigital.com/
+Oasis Digital  https://oasisdigital.com/
 
 Copyright 2016-2018
 
