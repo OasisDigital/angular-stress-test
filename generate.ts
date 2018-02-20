@@ -157,7 +157,7 @@ export class AppComponent { }
     html += `<${sel}></${sel}>\n`;
   }
   fs.writeFileSync(baseDir + "app.component.html", html);
-  
+
 }
 
 function generateAppModule(nModules) {
@@ -168,11 +168,11 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 `;
 
-for (let m = 0; m < nModules; m++) {
-  const moduleName = 'Module' + fmt(m);
-  const moduleFileName = `${baseDir}${moduleName}/${moduleName}.module`;
-  ts += `import { ${moduleName} } from '${moduleFileName}';\n`;
-}
+  for (let m = 0; m < nModules; m++) {
+    const moduleName = 'Module' + fmt(m);
+    const moduleFileName = `${baseDir}${moduleName}/${moduleName}.module`;
+    ts += `import { ${moduleName} } from '${moduleFileName}';\n`;
+  }
 
   ts += `
 
@@ -183,11 +183,11 @@ for (let m = 0; m < nModules; m++) {
   imports: [
     BrowserModule,
 `;
-    for (let m = 0; m < nModules; m++) {
-      const moduleName = 'Module' + fmt(m);
-      ts += `    ${moduleName},\n`;
-    }
-    ts += `
+  for (let m = 0; m < nModules; m++) {
+    const moduleName = 'Module' + fmt(m);
+    ts += `    ${moduleName},\n`;
+  }
+  ts += `
   ],
   bootstrap: [
     AppComponent

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": ".",
+        "sourceMap": true,
+        "declaration": true,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "module": "commonjs",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2017"
+        ]
+    },
+    "files": [
+        "generate.ts"
+    ]
+}
