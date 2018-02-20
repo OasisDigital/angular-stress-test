@@ -36,16 +36,19 @@ npm install -g angular-stress-test
 ```
 cd to-a-typical-angular-app
 cd src/app
-angular-stress-test 42 420
+angular-stress-test 7 42
 ```
 
-This will generate an application with 42 modules and 420 components spread
+This will generate an application with 7 modules and 42 components spread
 across those modules. They will be nested in a "binary tree" shape, with a bit
 of indentation to make this clear on the screen.
 
 The output is compatible with Angular CLI; you can use CLI to
 generation an application, then populate it using this tool, and it should run
 without any further change.
+
+You can also try much larger numbers, to see how well build tooling works with
+an Angular program with more numerous modules and components.
 
 ## Why?
 
