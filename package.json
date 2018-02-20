@@ -18,5 +18,8 @@
     "README.md",
     "bin.js",
     "generate.js"
-  ]
+  ],
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
 }
