@@ -50,12 +50,24 @@ without any further change.
 You can also try much larger numbers, to see how well build tooling works with
 an Angular program with more numerous modules and components.
 
+## Bazel - Experimental
+
+By default, the generated code is ready to use with Angular CLI, or with other
+typical build tooling that has similar requirements.
+
+There is an experimental option "--bazel", which additionally generates
+BUILD.bazel files, so that this can also be used the stress test the upcoming
+Bazel base to build tooling. This purely generates additional files; the
+TypeScript and HTML files are unaffected.
+
+If you don't recognize the word Bazel, don't worry, just ignore this.
+
 ## Why?
 
-The purpose of this is to make it possible to "stress test" how well your
-favorite build tooling will fare using applications consisting of highly
-numerous source code files and components. It can also be used to stress Angular
-itself, under similar conditions.
+The purpose of this is to make it possible to "stress test" how well development
+(IDE and build tooling) handle applications consisting of highly numerous source
+code files and components. It can also be used to stress Angular itself, under
+similar conditions.
 
 ## Who?
 

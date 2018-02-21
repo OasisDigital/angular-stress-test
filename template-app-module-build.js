@@ -1,0 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function appModuleBuildContents(moduleNames) {
+    var deps = moduleNames
+        .map(function (name) { return '//src/' + name; });
+    return "package(default_visibility = [\"//visibility:public\"])\n\nload(\"@angular//:index.bzl\", \"ng_module\")\n\nng_module(\n    name = \"src\",\n    srcs = glob([\"*.ts\"]),\n    assets = glob([\"*.html\"]),\n    tsconfig = \":tsconfig.json\",\n    deps = " + JSON.stringify(deps) + ",\n)\n\n# Needed because the devserver only loads static files that appear under this\n# package.\ngenrule(\n    name = \"zone.js\",\n    srcs = [\"//:node_modules/zone.js/dist/zone.min.js\"],\n    outs = [\"zone.min.js\"],\n    cmd = \"cp $< $@\",\n)\n\nload(\"@build_bazel_rules_typescript//:defs.bzl\", \"ts_devserver\")\n\nts_devserver(\n    name = \"devserver\",\n    entry_module = \"angular_bazel_example/src/main\",\n    scripts = [\"//:angular_bundles\"],\n    serving_path = \"/bundle.min.js\",\n    static_files = [\n        \":zone.js\",\n        \"index.html\",\n    ],\n    deps = [\"//src\"],\n)\n\nload(\"@build_bazel_rules_nodejs//:defs.bzl\", \"rollup_bundle\", \"nodejs_binary\")\n\nrollup_bundle(\n    name = \"bundle\",\n    entry_point = \"src/main\",\n    deps = [\"//src\"],\n)\n\nnodejs_binary(\n    name = \"prodserver\",\n    args = [\"./src\"],\n    data = [\n        \"index.html\",\n        \":bundle\",\n        \":zone.js\",\n    ],\n    entry_point = \"http-server/bin/http-server\",\n)\n";
+}
+exports.appModuleBuildContents = appModuleBuildContents;
+//# sourceMappingURL=template-app-module-build.js.map

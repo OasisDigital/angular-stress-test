@@ -1,6 +1,6 @@
 {
   "name": "angular-stress-test",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Generate an Angular application with N components",
   "bin": "./bin.js",
   "main": "./generate.js",
@@ -15,12 +15,6 @@
     "url": "https://github.com/OasisDigital/angular-stress-test.git"
   },
   "license": "MIT",
-  "files": [
-    "LICENSE",
-    "README.md",
-    "bin.js",
-    "generate.js"
-  ],
   "dependencies": {
     "mkdirp": "^0.5.1"
   },

@@ -3,3 +3,5 @@ node_modules
 generate.js
 *.d.ts
 *.map
+*.zip
+*.tgz
