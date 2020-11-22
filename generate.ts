@@ -61,7 +61,7 @@ import { Component, Input } from '@angular/core';\n`;
   templateUrl: './${this.fileName}.html'
 })
 export class ${this.name} {
-  @Input() parentName: string;
+  @Input() parentName = '';
   myName = '${this.name}';
 `;
 

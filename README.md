@@ -1,14 +1,16 @@
 # angular-stress-test
 
-This program generates an Angular application with an arbitrary number of
+This program generates an Angular application with a configurable number of
 components. The components are nested in a binary tree shape. The program only
-generates the actual components, in TypeScript form; use whatever mechanism you
-prefer (such as angular-cli) for the build mechanism.
+generates the actual components, in TypeScript form.
 
 Each component has two fields; one Input and another locally set. As the
 components use each other, these fields and bindings are used also.
 
-An NgModule is also generated.
+The components are spread across an configurable number of modules.
+
+Optional, for Bazel users: BAZEL.build files can be generated in a form
+compatible with the Bazel build setup in the rules_nodejs example.
 
 ## Stress Testing Your Build Tooling
 
@@ -17,13 +19,12 @@ inserting a meaningless random value. This is useful for stress-testing build
 tooling - you can this generator in a loop like so (in Bash):
 
 ```
-for i in `seq 1 1000`; do angular-stress-test 500 -r ; sleep 5 ; done
+for i in `seq 1 1000`; do angular-stress-test 10 75 -r ; sleep 5 ; done
 ```
 
 By adjusting the delay (in second) and number of components generated, you can
-"stress test" any build tool (like angular-cli) which is watching the files and
-re-building. While such a thing is running, keep an eye on your build tool's
-CPU and RAM use.
+"stress test" any build tool which is watching the files and re-building. While
+such a thing is running, keep an eye on your build tool's CPU and RAM use.
 
 ## Installation
 
@@ -75,6 +76,6 @@ Kyle Cordes    https://kylecordes.com/
 
 Oasis Digital  https://oasisdigital.com/
 
-Copyright 2016-2018
+Copyright 2016-2020
 
 MIT License
