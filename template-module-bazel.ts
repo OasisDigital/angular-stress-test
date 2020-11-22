@@ -6,42 +6,19 @@ export function moduleBuildContents(
 
   const str = data => JSON.stringify(data, undefined, 2);
 
-  return `package(default_visibility = ["//visibility:public"])
+  return `load("//tools:angular_ts_library.bzl", "ng_ts_library")
 
-load("@angular//:index.bzl", "ng_module")
-load("@build_bazel_rules_typescript//:defs.bzl", "ts_library", "ts_web_test")
+package(default_visibility = ["//:__subpackages__"])
 
-ng_module(
+ng_ts_library(
     name = ${str(name)},
     srcs = ${str(sourcefileNames)},
-    assets = ${str(assetFileNames)},
+    angular_assets = ${str(assetFileNames)},
     tsconfig = "//src:tsconfig.json",
     deps = [
-        "//src/lib",
-        "@rxjs",
-    ],
-)
-
-ts_library(
-    name = ${str('test_' + name)},
-    testonly = 1,
-    srcs = glob(["*.spec.ts"]),
-    deps = [${str(':' + name)}],
-)
-
-ts_web_test(
-    name = "test",
-    bootstrap = ["//:angular_bootstrap_scripts"],
-    deps = [
-        ${str(':test_' + name)},
-        "//:angular_bundles",
-        "//:angular_test_bundles",
-    ],
+      "@npm//@angular/core",
+      "@npm//@angular/common",
+  ],
 )
 `;
-
 }
-
-// Alternative:
-// srcs = glob(["*.ts"]),
-// assets = glob(["*.html"]),

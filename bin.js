@@ -41,5 +41,5 @@ Options:
   if (bazel) {
     console.log('Experimentally generating BUILD.bazel files');
   }
-  generate.generate(n, c, deterministic, bazel);
+  generate.generate('.', n, c, deterministic, bazel);
 }
